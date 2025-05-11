@@ -1,0 +1,70 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #000000;
+        }
+
+        .calculator {
+            background: #000;
+            border-radius: 20px;
+            box-shadow: 0 0 25px #0ff4, 0 0 50px #80f;
+            padding: 20px;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 60px);
+            gap: 10px;
+        }
+        .display {
+            grid-column: span 4;
+            height: 40px;
+            padding-right: 10px;
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 1.5rem;
+            text-align: right;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 -4px 8px rgba(128, 0, 255, 0.4);
+        }
+        .button {
+            height: 60px;
+            font-size: 20px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            background: #2c2c2c;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .button:active {
+            transform: scale(1.2);
+            background: white;
+            color: black;
+        }
+        .wide {
+            grid-column: span 2;
+        }
+
+
+    </style>
+</head>
+<body>
+    <form class="calculator" action="/calculate" method="POST">
+        <input type="text" class="display" name="expression" value="{{.Result}}" readonly>
+        {{range .Buttons}}
+            <button name="button"class="button" value="{{.}}">{{.}}</button>
+        {{end}}
+    </form>
+
+</body>
+</html>
